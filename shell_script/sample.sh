@@ -9,10 +9,10 @@ log_file="$( echo $0 | cut -d "." -f1).log"
 
 echo "$log_file"
 
-echo -e " $RED install failed $NORMAL"
+echo -e " $RED install failed $NORMAL" | tee -a "$log_file"
 
 echo -e " $GREEN install success $NORMAL " 
 
-echo -e  " $ORANGE skipping  $NORMAL " 
+echo -e  " $ORANGE skipping  $NORMAL "  | tee -a "$log_file"
 
 echo -e  " This is normal text " 

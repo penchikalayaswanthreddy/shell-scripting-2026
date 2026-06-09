@@ -10,21 +10,21 @@ uid=$(id -u)
 
 if [ $uid -ne 0 ]
 then
-    echo " $RED Please login as root user to install packages $NORMAL" 
+    echo -e " $RED Please login as root user to install packages $NORMAL" 
     exit 1
 fi
     
 
 install_package()
 {
-    sudo dnf list installed "$1" &>> "$log_file"
+    dnf list installed "$1" &>> "$log_file"
 
     if [ $? -eq 0 ]
     then 
         echo -e " $ORANGE package $1 is already installed $NORMAL"
         return
     else
-        sudo dnf install -y "$1" &>> "$log_file"
+        dnf install -y "$1" &>> "$log_file"
 
         if [ $? -eq 0 ]
         then
